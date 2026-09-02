@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pregunta seria</title>
+  <style>
+    * { 
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #000000 0%, #434343 50%, #ffffff 100%);
+      overflow: hidden;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      text-align: center;
+      max-width: 450px;
+      width: 90%;
+    }
+
+    h1 {
+      color: #111;
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+    }
+
+    .btn-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      position: relative;
+      min-height: 60px;
+    }
+
+    button {
+      padding: 12px 30px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.15s ease;
+    }
+
+    #btn-si {
+      background-color: #000;
+      color: #fff;
+    }
+
+    #btn-si:hover {
+      transform: scale(1.05);
+      background-color: #222;
+    }
+
+    #btn-no {
+      background-color: #e0e0e0;
+      color: #333;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>dame una oportunidad hombreee🫣</h1>
+    <div class="btn-container">
+      <button id="btn-si" onclick="alert('apoko tiiii me mame vrd')"> Sí</button>
+      <button id="btn-no">No</button>
+    </div>
+  </div>
+
+  <script>
+    const btnNo = document.getElementById('btn-no');
+
+    function moverBoton() {
+      const padding = 20;
+      const anchoVentana = window.innerWidth - btnNo.offsetWidth - padding;
+      const altoVentana = window.innerHeight - btnNo.offsetHeight - padding;
+
+      const randomX = Math.max(padding, Math.floor(Math.random() * anchoVentana));
+      const randomY = Math.max(padding, Math.floor(Math.random() * altoVentana));
+
+      btnNo.style.position = 'fixed';
+      btnNo.style.left = `${randomX}px`;
+      btnNo.style.top = `${randomY}px`;
+    }
+
+    // Se mueve tanto al pasar el cursor por encima como al intentar tocarlo en móviles
+    btnNo.addEventListener('mouseenter', moverBoton);
+    btnNo.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      moverBoton();
+    });
+  </script>
+
+</body>
+</html>
